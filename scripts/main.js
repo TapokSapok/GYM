@@ -2,31 +2,57 @@
 const wrapper = document.querySelector('.wrapper')
 const dick = document.getElementById('dick')
 const hand = document.getElementById('hand')
+const spermikiOut = document.getElementById('spermiki')
 
-let posY = undefined;
+let animateActive = false;
+let spermiki = 0;
+let multiplier = 1;
 
-window.onload = ch()
+window.onload = ch(); scoreOut()
 
 function ch() {
    hand.style.top = `${206}px`
    dick.style.marginTop = `${53.25}px`
-
 }
 
-wrapper.addEventListener('mousemove', (e) => {
+function scoreOut() {
+   spermikiOut.innerText = 'Спермиков: ' + spermiki
+}
 
-   posY = e.clientY;
-   console.log(posY)
+function drochAnim() {
+   if (animateActive === true) return;
+   animateActive = true;
 
-   if (posY <= 425) {
-      return;
-   } else {
-      hand.style.top = `${posY - 220}px`
-      dick.style.marginTop = `${posY / 8}px`
+   let pos = 0;
+   let one = setInterval(frameOne, 0)
+   let speed = 10;
+
+   function frameOne() {
+      if (pos >= 350) {
+         clearInterval(one)
+         let two = setInterval(frameTwo, 0)
+
+         function frameTwo() {
+            if (pos === 0) {
+               clearInterval(two)
+               animateActive = false;
+            } else {
+               pos -= speed
+               hand.style.top = `${pos + 200}px`
+               dick.style.marginTop = `${pos / 2}px`
+            }
+         }
+      } else {
+         pos += speed;
+         hand.style.top = `${pos + 200}px`
+         dick.style.marginTop = `${pos / 2}px`
+      }
    }
 
-
-
-   // console.log(posY)
-})
+   setTimeout(() => {
+      spermiki += multiplier
+      console.log(spermiki)
+      scoreOut()
+   }, speed * 20);
+}
 

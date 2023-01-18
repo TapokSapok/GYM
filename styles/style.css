@@ -3,12 +3,14 @@
 .wrapper {
    width: 730px;
    height: 770px;
-   margin: 5% auto;
+   top: 100px;
+   left: 50%;
+   transform: translate(-50%);
    box-shadow: 0 0 3px #191919;
    border-radius: 3px;
    overflow: hidden;
    background-color: rgb(255, 223, 223);
-   position: relative;
+   position: absolute;
 }
 
 .wrapper-image {
@@ -20,10 +22,28 @@
    -ms-user-select: none;
 }
 
-#dick {
-   /* position: absolute; */
-}
-
 #hand {
    position: absolute;
+}
+
+/* //////////////////////////////////////////// */
+
+.money-panel {
+   /* width: 350px; */
+   /* max-width: 500px; */
+   height: 60px;
+   background-color: #191919;
+   margin: 1% auto;
+   text-align: center;
+
+}
+
+.pS {
+   display: inline-block;
+   margin-top: 4px;
+   color: #fff;
+   font-size: 50px;
+   font-family: fantasy;
+   font-weight: 100;
+   /* width: 300px; */
 }
