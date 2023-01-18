@@ -25,8 +25,7 @@ wrapper.addEventListener('mousemove', (e) => {
       dick.style.marginTop = `${posY / 8}px`
    }
 
-   // hand.style.top = `${posY - 220}px`
-   // dick.style.marginTop = `${posY / 8}px`
+
 
    // console.log(posY)
 })
