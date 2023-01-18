@@ -1,0 +1,49 @@
+@import url(nullstyles.css);
+
+.wrapper {
+   width: 730px;
+   height: 770px;
+   top: 100px;
+   left: 50%;
+   transform: translate(-50%);
+   box-shadow: 0 0 3px #191919;
+   border-radius: 3px;
+   overflow: hidden;
+   background-color: rgb(255, 223, 223);
+   position: absolute;
+}
+
+.wrapper-image {
+   user-drag: none;
+   -webkit-user-drag: none;
+   user-select: none;
+   -moz-user-select: none;
+   -webkit-user-select: none;
+   -ms-user-select: none;
+}
+
+#hand {
+   position: absolute;
+}
+
+/* //////////////////////////////////////////// */
+
+.money-panel {
+   /* width: 350px; */
+   /* max-width: 500px; */
+   height: 60px;
+   background-color: #191919;
+   margin: 1% auto;
+   text-align: center;
+
+}
+
+.pS {
+   display: inline-block;
+   margin-top: 4px;
+   color: #fff;
+   font-size: 50px;
+   font-family: fantasy;
+   font-weight: 100;
+   /* width: 300px; */
+}
