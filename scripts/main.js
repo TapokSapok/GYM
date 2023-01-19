@@ -3,11 +3,15 @@ const wrapper = document.querySelector('.wrapper')
 const dick = document.getElementById('dick')
 const hand = document.getElementById('hand')
 const spermikiOut = document.getElementById('spermiki')
+const banCounterQuery = document.querySelector('.ban-counter')
 
 let animateActive = false;
 let spermiki = 0;
 let multiplier = 1;
 let speed = 10;
+let clicksPerSecond = 0;
+let banCounter = 30;
+let ban = false;
 
 window.onload = ch(); scoreOut()
 
@@ -16,8 +20,37 @@ function ch() {
    // dick.style.marginTop = `${100}px`
 }
 
+const banPanel = document.querySelector('.ban-panel')
+
+
+document.addEventListener('click', () => {
+   if (clicksPerSecond == 15) {
+      if (ban) return;
+      ban = true;
+      banCounter = 30;
+      scoreOut()
+      banPanel.style.display = 'block'
+      let interval = setInterval(() => {
+         if (banCounter === 0) {
+            console.log('unbaned')
+            banPanel.style.display = 'none'
+            clearInterval(interval)
+            ban = false;
+         }
+         banCounter -= 1
+         scoreOut()
+      }, 1000);
+   }
+   clicksPerSecond += 1
+})
+
+setInterval(() => {
+   clicksPerSecond = 0;
+}, 1000);
+
 function scoreOut() {
    spermikiOut.innerText = 'Спермиков: ' + spermiki
+   banCounterQuery.innerText = banCounter
 }
 
 function drochAnim() {

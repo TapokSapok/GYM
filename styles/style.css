@@ -2,7 +2,12 @@
 
 body {
    overflow: hidden;
+   user-select: none;
 }
+
+
+
+/* @media screen and (min-width: ) */
 
 .wrapper {
    width: 730px;
@@ -134,4 +139,17 @@ body {
    font-weight: 700;
    font-size: 50px;
    text-align: center;
+}
+
+.ban-panel-title {
+   text-align: center;
+   font-size: 30px;
+   color: #fff;
+   font-weight: 700;
+}
+
+.ban-counter {
+   margin-top: 100px;
+   font-size: 100px;
+
 }
