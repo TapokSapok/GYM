@@ -18,7 +18,7 @@ window.onload = ch(); scoreOut()
 
 function ch() {
    hand.style.top = `${200}px`
-   alert('latest Version: 1.0 beta')
+   // alert('latest Version: 1.0 beta')
 }
 
 const banPanel = document.querySelector('.ban-panel')
