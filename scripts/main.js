@@ -7,12 +7,13 @@ const spermikiOut = document.getElementById('spermiki')
 let animateActive = false;
 let spermiki = 0;
 let multiplier = 1;
+let speed = 10;
 
 window.onload = ch(); scoreOut()
 
 function ch() {
-   hand.style.top = `${206}px`
-   dick.style.marginTop = `${53.25}px`
+   hand.style.top = `${200}px`
+   // dick.style.marginTop = `${100}px`
 }
 
 function scoreOut() {
@@ -25,7 +26,6 @@ function drochAnim() {
 
    let pos = 0;
    let one = setInterval(frameOne, 0)
-   let speed = 10;
 
    function frameOne() {
       if (pos >= 350) {
@@ -53,6 +53,59 @@ function drochAnim() {
       spermiki += multiplier
       console.log(spermiki)
       scoreOut()
-   }, speed * 20);
+   }, speed);
 }
+
+const btns = document.querySelectorAll('.btn')
+const btnPanels = document.querySelectorAll('.panel-btn')
+const leaveBtns = document.querySelectorAll('.leave-btn')
+
+// btns.forEach((el) => {
+//    el.addEventListener('click', (e) => {
+//       if (el.classList.contains('active')) {
+//          el.classList.remove('active')
+//       } else {
+//          btns.forEach((e) => {
+//             e.classList.remove('active')
+//          })
+//          el.classList.add('active')
+
+//          let data = el.dataset.btn
+
+//          btnPanels.forEach((el) => {
+//             if (data === el.dataset.btn) {
+
+//                if (el.classList.contains('active')) {
+//                   el.classList.remove('active')
+//                } else {
+//                   btnPanels.forEach((e) => {
+//                      e.classList.remove('active')
+//                   })
+//                   el.classList.add('active')
+//                }
+//             }
+//          })
+//       }
+//    })
+// })
+
+leaveBtns.forEach((el) => {
+   el.addEventListener('click', (e) => {
+      btnPanels.forEach(el => el.classList.remove('active'))
+   })
+})
+
+btns.forEach((el) => {
+   el.addEventListener('click', (e) => {
+      let data = el.dataset.btn
+
+      btnPanels.forEach((el) => {
+         el.classList.remove('active')
+         if (data === el.dataset.btn) {
+            el.classList.add('active')
+         }
+      })
+   })
+})
+
 
