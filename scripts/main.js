@@ -1,4 +1,5 @@
 
+
 const wrapper = document.querySelector('.wrapper')
 const dick = document.getElementById('dick')
 const hand = document.getElementById('hand')
@@ -17,7 +18,7 @@ window.onload = ch(); scoreOut()
 
 function ch() {
    hand.style.top = `${200}px`
-   // dick.style.marginTop = `${100}px`
+   alert('latest Version: 1.0 beta')
 }
 
 const banPanel = document.querySelector('.ban-panel')
