@@ -24,30 +24,30 @@ function ch() {
 const banPanel = document.querySelector('.ban-panel')
 
 
-document.addEventListener('click', () => {
-   if (clicksPerSecond == 15) {
-      if (ban) return;
-      ban = true;
-      banCounter = 30;
-      scoreOut()
-      banPanel.style.display = 'block'
-      let interval = setInterval(() => {
-         if (banCounter === 0) {
-            console.log('unbaned')
-            banPanel.style.display = 'none'
-            clearInterval(interval)
-            ban = false;
-         }
-         banCounter -= 1
-         scoreOut()
-      }, 1000);
-   }
-   clicksPerSecond += 1
-})
+// document.addEventListener('click', () => {
+//    if (clicksPerSecond == 15) {
+//       if (ban) return;
+//       ban = true;
+//       banCounter = 30;
+//       scoreOut()
+//       banPanel.style.display = 'block'
+//       let interval = setInterval(() => {
+//          if (banCounter === 0) {
+//             console.log('unbaned')
+//             banPanel.style.display = 'none'
+//             clearInterval(interval)
+//             ban = false;
+//          }
+//          banCounter -= 1
+//          scoreOut()
+//       }, 1000);
+//    }
+//    clicksPerSecond += 1
+// })
 
-setInterval(() => {
-   clicksPerSecond = 0;
-}, 1000);
+// setInterval(() => {
+//    clicksPerSecond = 0;
+// }, 1000);
 
 function scoreOut() {
    spermikiOut.innerText = 'Спермиков: ' + spermiki
