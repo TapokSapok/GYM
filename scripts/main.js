@@ -7,7 +7,7 @@ const spermikiOut = document.getElementById('spermiki')
 const banCounterQuery = document.querySelector('.ban-counter')
 
 let animateActive = false;
-let spermiki = 0;
+let spermiki = 1300;
 let multiplier = 1;
 let speed = 10;
 let clicksPerSecond = 0;
@@ -53,15 +53,15 @@ window.onload = ch(); scoreOut()
 
 function ch() {
    hand.style.bottom = `${200}px`
-   alert(`Версия: 1.2 БЕТА
-   Что было добавлено (изменено):
-      1. Поменял интерфейс.
-      2. Добавил промокоды.
-      3. Добавил скины.
-      4. Пофиксил баги.
+   // alert(`Версия: 1.2 БЕТА
+   // Что было добавлено (изменено):
+   //    1. Поменял интерфейс.
+   //    2. Добавил промокоды.
+   //    3. Добавил скины.
+   //    4. Пофиксил баги.
 
-   По поводу промокода на эксклюзивный член писать @SapokTapok
-   `)
+   // По поводу промокода на эксклюзивный член писать @SapokTapok
+   // `)
    findActiveSkin()
 }
 
@@ -201,5 +201,50 @@ promoBtn.addEventListener('click', () => {
       promoInput.value = ''
    }, 700);
 
+})
+
+const invBtn = document.querySelectorAll('.inv-item-btn');
+const invPrice = document.querySelectorAll('.inv-item-price')
+
+invBtn.forEach((el) => {
+
+   for (let i = 0; i < inventory.skins.length; i++) {
+      if (inventory.skins[i].owns) {
+         if (el.dataset.skin === inventory.skins[i].item) {
+            let data = el.dataset.skin;
+            invPrice.forEach((el) => {
+               if (data === el.dataset.skin) {
+                  el.innerText = ''
+               }
+            })
+         }
+      }
+   }
+
+
+   el.addEventListener('click', (e) => {
+      for (let i = 0; i < inventory.skins.length; i++) {
+         if (el.dataset.skin === inventory.skins[i].item) {
+            if (!inventory.skins[i].owns) {
+
+               el.innerText = 'Члена нет в инвентаре!'
+
+               setTimeout(() => {
+                  el.innerText = 'Выбрать'
+               }, 700);
+               return;
+            }
+
+            resetActiveSkin()
+            inventory.skins[i].enable = true;
+            findActiveSkin()
+
+            el.innerText = 'Член выбран!'
+            setTimeout(() => {
+               el.innerText = 'Выбрать'
+            }, 700);
+         }
+      }
+   })
 })
 
