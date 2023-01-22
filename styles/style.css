@@ -61,15 +61,22 @@ body {
 #hand {
    position: absolute;
    z-index: 1;
+   height: 200px;
+   width: 600px;
+}
+
+#dick {
+   height: 500px;
+   width: 580px;
 }
 
 /* //////////////////////////////////////////// */
 
 .money-panel {
+
    height: 60px;
    background-color: #191919;
    text-align: center;
-
 }
 
 .pS {

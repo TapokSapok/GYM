@@ -17,7 +17,7 @@ let ban = false;
 window.onload = ch(); scoreOut()
 
 function ch() {
-   hand.style.bottom = `${310}px`
+   hand.style.bottom = `${200}px`
    // alert('latest Version: 1.0 beta')
 }
 
@@ -73,13 +73,13 @@ function drochAnim() {
                animateActive = false;
             } else {
                pos += speed
-               hand.style.bottom = `${pos + 310}px`
+               hand.style.bottom = `${pos + 200}px`
                dick.style.bottom = `${pos / 2}px`
             }
          }
       } else {
          pos -= speed;
-         hand.style.bottom = `${pos + 310}px`
+         hand.style.bottom = `${pos + 200}px`
          dick.style.bottom = `${pos / 2}px`
       }
 
