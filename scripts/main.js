@@ -17,8 +17,8 @@ let ban = false;
 window.onload = ch(); scoreOut()
 
 function ch() {
-   hand.style.top = `${200}px`
-   alert('latest Version: 1.0 beta')
+   hand.style.bottom = `${310}px`
+   // alert('latest Version: 1.0 beta')
 }
 
 const banPanel = document.querySelector('.ban-panel')
@@ -62,7 +62,8 @@ function drochAnim() {
    let one = setInterval(frameOne, 0)
 
    function frameOne() {
-      if (pos >= 350) {
+      console.log(pos)
+      if (pos <= -350) {
          clearInterval(one)
          let two = setInterval(frameTwo, 0)
 
@@ -71,16 +72,17 @@ function drochAnim() {
                clearInterval(two)
                animateActive = false;
             } else {
-               pos -= speed
-               hand.style.top = `${pos + 200}px`
-               dick.style.marginTop = `${pos / 2}px`
+               pos += speed
+               hand.style.bottom = `${pos + 310}px`
+               dick.style.bottom = `${pos / 2}px`
             }
          }
       } else {
-         pos += speed;
-         hand.style.top = `${pos + 200}px`
-         dick.style.marginTop = `${pos / 2}px`
+         pos -= speed;
+         hand.style.bottom = `${pos + 310}px`
+         dick.style.bottom = `${pos / 2}px`
       }
+
    }
 
    setTimeout(() => {
