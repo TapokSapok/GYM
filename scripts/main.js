@@ -13,24 +13,48 @@ let speed = 10;
 let clicksPerSecond = 0;
 let banCounter = 30;
 let ban = false;
-let skinActive = document.getElementById('dick')
+let activeSkin;
 
-// let inventory = {
-//    dicks: []
-// }
-
-let inventory = {
-   dicks: []
+let resetActiveSkin = () => {
+   activeSkin.style.display = 'none'
+   for (let i = 0; i < inventory.skins.length; i++) {
+      inventory.skins[i].enable = false;
+   }
 }
 
+let findActiveSkin = () => {
+   for (let i = 0; i < inventory.skins.length; i++) {
+      if (inventory.skins[i].enable == true) {
 
+         switch (inventory.skins[i].item) {
+            case 'default': activeSkin = document.getElementById('dick')
+               break;
+            case 'rubber': activeSkin = document.getElementById('skin-rubber')
+               break;
+         }
+
+         activeSkin.style.display = 'block'
+         return inventory.skins[i].item;
+      }
+   }
+}
+
+let inventory = {
+   skins: [
+      { item: 'default', owns: true, enable: true },
+      { item: 'rubber', owns: false, enable: false },
+      { item: '', owns: false, enable: false },
+      { item: '', owns: false, enable: false },
+      { item: '', owns: false, enable: false },
+   ]
+}
 
 window.onload = ch(); scoreOut()
 
 function ch() {
    hand.style.bottom = `${200}px`
    // alert('latest Version: 1.0 beta')
-   skinActive.style.display = 'block'
+   findActiveSkin()
 }
 
 const banPanel = document.querySelector('.ban-panel')
@@ -84,8 +108,9 @@ function drochAnim() {
    let one = setInterval(frameOne, 0)
 
    function frameOne() {
-      console.log(pos)
+
       if (pos <= -350) {
+
          clearInterval(one)
          let two = setInterval(frameTwo, 0)
 
@@ -96,20 +121,17 @@ function drochAnim() {
             } else {
                pos += speed
                hand.style.bottom = `${pos + 200}px`
-               dick.style.bottom = `${pos / 2}px`
+               activeSkin.style.bottom = `${pos / 2}px`
             }
          }
       } else {
          pos -= speed;
          hand.style.bottom = `${pos + 200}px`
-         dick.style.bottom = `${pos / 2}px`
+         activeSkin.style.bottom = `${pos / 2}px`
       }
-
    }
-
    setTimeout(() => {
       spermiki += multiplier
-      console.log(spermiki)
       scoreOut()
    }, speed);
 }
@@ -151,9 +173,12 @@ promoBtn.addEventListener('click', () => {
    if (promoInput.value === 'promo') {
       promoInput.value = 'Промокод активирован!'
       promoInput.style.color = '#00FF00'
-      inventory.dicks.push('rubber')
-      skinActive = document.getElementById('skin-rubber')
-      skinActive.style.display = 'block'
+
+      resetActiveSkin()
+      inventory.skins[1].owns = true;
+      inventory.skins[1].enable = true;
+      findActiveSkin()
+
 
       setTimeout(() => {
          promoInput.style.color = '#fff'
