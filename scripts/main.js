@@ -178,8 +178,8 @@ const promoInput = document.querySelector('.promo-input')
 const promoBtn = document.querySelector('.promo-btn')
 
 promoBtn.addEventListener('click', () => {
-   if (promoInput.value === 'promo') {
-      promoInput.value = 'Промокод активирован!'
+   if (promoInput.value === 'don2023') {
+      promoInput.value = 'Промокод (резиновый член) активирован!'
       promoInput.style.color = '#00FF00'
 
       resetActiveSkin()
