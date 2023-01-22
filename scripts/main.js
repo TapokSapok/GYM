@@ -53,7 +53,15 @@ window.onload = ch(); scoreOut()
 
 function ch() {
    hand.style.bottom = `${200}px`
-   // alert('latest Version: 1.0 beta')
+   alert(`Версия: 1.2 БЕТА
+   Что было добавлено (изменено):
+      1. Поменял интерфейс.
+      2. Добавил промокоды.
+      3. Добавил скины.
+      4. Пофиксил баги.
+
+   По поводу промокода на эксклюзивный член писать @SapokTapok
+   `)
    findActiveSkin()
 }
 
