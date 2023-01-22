@@ -178,6 +178,7 @@ body {
    font-weight: 700;
    font-size: 50px;
    text-align: center;
+   font-family: Arial, Helvetica, sans-serif;
 }
 
 .ban-panel-title {
@@ -225,4 +226,45 @@ body {
    width: 50px;
    height: 50px;
    margin: 5px 0;
+}
+
+.promo-panel {
+   margin: 50px 50%;
+   transform: translate(-50%);
+   width: 300px;
+   text-align: center;
+}
+
+.promo-input {
+   width: 230px;
+   height: 30px;
+   text-align: center;
+   background-color: #191919;
+   color: #fff;
+   border: solid 1px orange;
+   font-family: Arial, Helvetica, sans-serif;
+   font-weight: 600;
+   border-radius: 3px;
+}
+
+.promo-btn {
+   margin-top: 10px;
+   width: 200px;
+   height: 25px;
+   background-color: #191919;
+   color: #fff;
+   border: solid 1px orange;
+   font-family: Arial, Helvetica, sans-serif;
+   font-weight: 600;
+   border-radius: 2px;
+}
+
+.skins-item {
+   display: none;
+   height: 500px;
+   width: 580px;
+   bottom: 0;
+   left: 50%;
+   position: absolute;
+   transform: translate(-50%);
 }

@@ -13,12 +13,24 @@ let speed = 10;
 let clicksPerSecond = 0;
 let banCounter = 30;
 let ban = false;
+let skinActive = document.getElementById('dick')
+
+// let inventory = {
+//    dicks: []
+// }
+
+let inventory = {
+   dicks: []
+}
+
+
 
 window.onload = ch(); scoreOut()
 
 function ch() {
    hand.style.bottom = `${200}px`
    // alert('latest Version: 1.0 beta')
+   skinActive.style.display = 'block'
 }
 
 const banPanel = document.querySelector('.ban-panel')
@@ -30,11 +42,21 @@ document.addEventListener('click', () => {
       ban = true;
       banCounter = 30;
       scoreOut()
+
+      openBtn.style.background = 'red'
+      btns.forEach((el) => {
+         el.style.background = 'red'
+      })
+
       banPanel.style.display = 'block'
       let interval = setInterval(() => {
          if (banCounter === 0) {
             console.log('unbaned')
             banPanel.style.display = 'none'
+            openBtn.style.background = '#191919'
+            btns.forEach((el) => {
+               el.style.background = '#191919'
+            })
             clearInterval(interval)
             ban = false;
          }
@@ -92,7 +114,6 @@ function drochAnim() {
    }, speed);
 }
 
-// const btns = document.querySelectorAll('.btn')
 const btnPanels = document.querySelectorAll('.panel-btn')
 const leaveBtns = document.querySelectorAll('.leave-btn')
 
@@ -123,4 +144,29 @@ leaveBtns.forEach((el) => {
    })
 })
 
+const promoInput = document.querySelector('.promo-input')
+const promoBtn = document.querySelector('.promo-btn')
+
+promoBtn.addEventListener('click', () => {
+   if (promoInput.value === 'promo') {
+      promoInput.value = 'Промокод активирован!'
+      promoInput.style.color = '#00FF00'
+      inventory.dicks.push('rubber')
+      skinActive = document.getElementById('skin-rubber')
+      skinActive.style.display = 'block'
+
+      setTimeout(() => {
+         promoInput.style.color = '#fff'
+         promoInput.value = ''
+      }, 700);
+      return;
+   }
+   promoInput.value = 'Промокод не найден!'
+   promoInput.style.color = 'red'
+   setTimeout(() => {
+      promoInput.style.color = '#fff'
+      promoInput.value = ''
+   }, 700);
+
+})
 
