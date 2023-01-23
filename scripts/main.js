@@ -8,12 +8,18 @@ const banCounterQuery = document.querySelector('.ban-counter')
 
 let animateActive = false;
 let spermiki = 0;
-let multiplier = 1;
 let speed = 10;
 let clicksPerSecond = 0;
 let banCounter = 30;
 let ban = false;
 let activeSkin;
+
+
+let multiplier = () => {
+   for (let i = 0; i < inventory.skins.length; i++) {
+      if (inventory.skins[i].enable) return inventory.skins[i].multiplier
+   }
+};
 
 let resetActiveSkin = () => {
    activeSkin.style.display = 'none'
@@ -41,11 +47,11 @@ let findActiveSkin = () => {
 
 let inventory = {
    skins: [
-      { item: 'default', owns: true, enable: true },
-      { item: 'rubber', owns: false, enable: false },
-      { item: '', owns: false, enable: false },
-      { item: '', owns: false, enable: false },
-      { item: '', owns: false, enable: false },
+      { item: 'default', owns: true, enable: true, multiplier: 1 },
+      { item: 'rubber', owns: false, enable: false, multiplier: 2 },
+      { item: '', owns: false, enable: false, multiplier: 1 },
+      { item: '', owns: false, enable: false, multiplier: 1 },
+      { item: '', owns: false, enable: false, multiplier: 1 },
    ]
 }
 
@@ -139,7 +145,7 @@ function drochAnim() {
       }
    }
    setTimeout(() => {
-      spermiki += multiplier
+      spermiki += multiplier()
       scoreOut()
    }, speed);
 }
