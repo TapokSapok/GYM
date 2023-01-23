@@ -7,7 +7,7 @@ const spermikiOut = document.getElementById('spermiki')
 const banCounterQuery = document.querySelector('.ban-counter')
 
 let animateActive = false;
-let spermiki = 1300;
+let spermiki = 0;
 let multiplier = 1;
 let speed = 10;
 let clicksPerSecond = 0;
@@ -53,15 +53,15 @@ window.onload = ch(); scoreOut()
 
 function ch() {
    hand.style.bottom = `${200}px`
-   // alert(`Версия: 1.2 БЕТА
-   // Что было добавлено (изменено):
-   //    1. Поменял интерфейс.
-   //    2. Добавил промокоды.
-   //    3. Добавил скины.
-   //    4. Пофиксил баги.
+   alert(`Версия: 1.2 БЕТА
+   Что было добавлено (изменено):
+      1. Поменял интерфейс.
+      2. Добавил промокоды.
+      3. Добавил скины.
+      4. Пофиксил баги.
 
-   // По поводу промокода на эксклюзивный член писать @SapokTapok
-   // `)
+   По поводу промокода на эксклюзивный член писать @SapokTapok
+   `)
    findActiveSkin()
 }
 
