@@ -7,7 +7,7 @@ const spermikiOut = document.getElementById('spermiki')
 const banCounterQuery = document.querySelector('.ban-counter')
 
 let animateActive = false;
-let spermiki = 0;
+let spermiki = 1220;
 let speed = 10;
 let clicksPerSecond = 0;
 let banCounter = 30;
@@ -55,24 +55,33 @@ let inventory = {
    ]
 }
 
+let game = {
+   levels: [
+      { id: 0, title: 'default', },
+      { id: 1, title: '', },
+      { id: 2, title: '', },
+      { id: 3, title: '', },
+      { id: 4, title: '', },
+   ]
+}
+
 window.onload = ch(); scoreOut()
 
 function ch() {
    hand.style.bottom = `${200}px`
-   alert(`Версия: 1.2 БЕТА
-   Что было добавлено (изменено):
-      1. Поменял интерфейс.
-      2. Добавил промокоды.
-      3. Добавил скины.
-      4. Пофиксил баги.
+   // alert(`Версия: 1.2 БЕТА
+   // Что было добавлено (изменено):
+   //    1. Поменял интерфейс.
+   //    2. Добавил промокоды.
+   //    3. Добавил скины.
+   //    4. Пофиксил баги.
 
-   По поводу промокода на эксклюзивный член писать @SapokTapok
-   `)
+   // По поводу промокода на эксклюзивный член писать @SapokTapok
+   // `)
    findActiveSkin()
 }
 
 const banPanel = document.querySelector('.ban-panel')
-
 
 document.addEventListener('click', () => {
    if (clicksPerSecond == 15) {
@@ -210,47 +219,68 @@ promoBtn.addEventListener('click', () => {
 })
 
 const invBtn = document.querySelectorAll('.inv-item-btn');
-const invPrice = document.querySelectorAll('.inv-item-price')
+const invItems = document.querySelector('.inv-items');
 
 invBtn.forEach((el) => {
-
-   for (let i = 0; i < inventory.skins.length; i++) {
-      if (inventory.skins[i].owns) {
-         if (el.dataset.skin === inventory.skins[i].item) {
-            let data = el.dataset.skin;
-            invPrice.forEach((el) => {
-               if (data === el.dataset.skin) {
-                  el.innerText = ''
-               }
-            })
-         }
-      }
-   }
-
-
    el.addEventListener('click', (e) => {
       for (let i = 0; i < inventory.skins.length; i++) {
          if (el.dataset.skin === inventory.skins[i].item) {
-            if (!inventory.skins[i].owns) {
-
-               el.innerText = 'Члена нет в инвентаре!'
-
-               setTimeout(() => {
-                  el.innerText = 'Выбрать'
-               }, 700);
-               return;
-            }
+            if (!inventory.skins[i].owns) { return; }
 
             resetActiveSkin()
             inventory.skins[i].enable = true;
             findActiveSkin()
 
-            el.innerText = 'Член выбран!'
-            setTimeout(() => {
+            invBtn.forEach((el) => {
                el.innerText = 'Выбрать'
-            }, 700);
+            })
+
+            el.innerText = 'Используется'
          }
       }
    })
 })
 
+const shopBtn = document.querySelectorAll('.shop-item-btn')
+const shopPrice = document.querySelectorAll('.shop-item-price')
+const shopItem = document.querySelectorAll('.shop-item')
+
+shopBtn.forEach((el) => {
+   el.addEventListener('click', () => {
+      for (let i = 0; i < inventory.skins.length; i++) {
+         if (el.dataset.skin === inventory.skins[i].item) {
+            if (spermiki < +el.dataset.price) {
+               el.innerText = 'Нехватает спермы :('
+               setTimeout(() => {
+                  el.innerText = 'Купить'
+               }, 700);
+               return;
+            }
+            let data = el.dataset.skin
+            spermiki -= +el.dataset.price
+            scoreOut()
+
+            for (let i = 0; i < inventory.skins.length; i++) {
+               if (inventory.skins[i].item === data) {
+                  inventory.skins[i].owns = true;
+               }
+            }
+
+            shopItem.forEach((el) => {
+               if (el.dataset.skin === data) {
+                  el.remove()
+               }
+            })
+
+            let newItem = document.createElement('div')
+            newItem.className = "inv-item";
+            newItem.innerHTML = `
+            <div class="inv-item-title">${el.dataset.skin}</div>
+            <img src="skins/${el.dataset.skin}.png" class="inv-item-image">
+            <button class="inv-item-btn" data-skin="${el.dataset.skin}">Выбрать</button>
+            `;
+            invItems.append(newItem)
+         }
+      }
+   })
+})

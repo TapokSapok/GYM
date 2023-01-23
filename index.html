@@ -24,7 +24,7 @@
          <div class="btn-items">
             <button class="btn-item" data-btn="btn-1">promo</button>
             <button class="btn-item" data-btn="btn-2">Inv</button>
-            <button class="btn-item" data-btn="btn-3">Three</button>
+            <button class="btn-item" data-btn="btn-3">Shop</button>
             <button class="btn-item" data-btn="btn-4">Four</button>
          </div>
 
@@ -32,7 +32,7 @@
 
       <div class="panel-btn panel-btn-1" data-btn="btn-1">
          <div class="leave-btn"></div>
-         <p class="panels-p">1 меню | Промокоды</p>
+         <p class="panels-p">Промокоды</p>
          <div class="promo-panel">
             <label for="promo" class="promo-label">
                <input class="promo-input" type="text" placeholder="Введи промокод" id="promo">
@@ -43,42 +43,45 @@
       </div>
       <div class="panel-btn panel-btn-2" data-btn="btn-2">
          <div class="leave-btn"></div>
-         <p class="panels-p">2 меню</p>
+         <p class="panels-p">Инвентарь</p>
 
          <div class="inventory-panel">
-            <div class="inv-title">Члены</div>
             <div class="inv-items">
                <div class="inv-item">
                   <div class="inv-item-title">Обычный</div>
                   <img src="images/dick.png" class="inv-item-image">
-                  <div class="inv-item-price" data-skin="default">Приобретено</div>
                   <button class="inv-item-btn" data-skin="default">Выбрать</button>
                </div>
-               <div class="inv-item">
-                  <div class="inv-item-title">Резиновый</div>
-                  <img src="skins/skinRubber.png" class="inv-item-image">
-                  <div class="inv-item-price" data-skin="rubber" data-price="1200">Цена: 1200</div>
-                  <button class="inv-item-btn" data-skin="rubber">Выбрать</button>
-               </div>
-
-
             </div>
          </div>
       </div>
       <div class="panel-btn panel-btn-3" data-btn="btn-3">
          <div class="leave-btn"></div>
-         <p class="panels-p">3 меню</p>
+         <p class="panels-p">Магазин</p>
+
+         <div class="shop-panel">
+            <div class="shop-items">
+               <div class="shop-item" data-skin="rubber">
+                  <div class="shop-item-title">Резиновый</div>
+                  <img src="skins/rubber.png" class="shop-item-image">
+                  <div class="shop-item-price" data-skin="rubber">Цена: 1200</div>
+                  <button class="shop-item-btn" data-skin="rubber" data-price="1200">Купить</button>
+               </div>
+            </div>
+         </div>
       </div>
-      <div class="panel-btn panel-btn-4" data-btn="btn-4">
-         <div class="leave-btn"></div>
-         <p class="panels-p">4 меню</p>
-      </div>
+
+   </div>
+   <div class="panel-btn panel-btn-4" data-btn="btn-4">
+      <div class="leave-btn"></div>
+      <p class="panels-p">4 меню</p>
+   </div>
    </div>
 
    <div class="wrapper" onclick="drochAnim()">
       <img src="images/hand.png" alt="Здесь должна быть рука" class="wrapper-image" id="hand">
       <img src="images/dick.png" alt="Здесь должен быть член" class="wrapper-image skins-item" id="dick">
-      <img src="skins/skinRubber.png" class="skins-item" id="skin-rubber">
+      <img src="skins/rubber.png" class="skins-item" id="skin-rubber">
    </div>
 
    <div class="money-panel">
@@ -86,5 +89,6 @@
    </div>
 </body>
 <script src="scripts/main.js"></script>
+<script src="scripts/db.js"></script>
 
 </html>
