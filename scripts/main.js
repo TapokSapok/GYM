@@ -7,7 +7,7 @@ const spermikiOut = document.getElementById('spermiki')
 const banCounterQuery = document.querySelector('.ban-counter')
 
 let animateActive = false;
-let spermiki = 1220;
+let spermiki = 0;
 let speed = 10;
 let clicksPerSecond = 0;
 let banCounter = 30;
