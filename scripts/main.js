@@ -37,6 +37,7 @@ let findActiveSkin = () => {
                break;
             case 'rubber': activeSkin = document.getElementById('skin-rubber')
                break;
+            case 'Amerikan': activeSkin = document.getElementById('skin-American')
          }
 
          activeSkin.style.display = 'block'
@@ -49,7 +50,7 @@ let inventory = {
    skins: [
       { item: 'default', owns: true, enable: true, multiplier: 1 },
       { item: 'rubber', owns: false, enable: false, multiplier: 2 },
-      { item: '', owns: false, enable: false, multiplier: 1 },
+      { item: 'Amerikan', owns: false, enable: false, multiplier: 2 },
       { item: '', owns: false, enable: false, multiplier: 1 },
       { item: '', owns: false, enable: false, multiplier: 1 },
    ]
@@ -79,6 +80,23 @@ function ch() {
    // По поводу промокода на эксклюзивный член писать @SapokTapok
    // `)
    findActiveSkin()
+}
+
+function activatePromo(i) {
+   promoInput.value = 'Промокод активирован!'
+   promoInput.style.color = '#00FF00'
+
+   resetActiveSkin()
+   inventory.skins[i].owns = true;
+   inventory.skins[i].enable = true;
+   findActiveSkin()
+
+
+   setTimeout(() => {
+      promoInput.style.color = '#fff'
+      promoInput.value = ''
+   }, 700);
+   return;
 }
 
 const banPanel = document.querySelector('.ban-panel')
@@ -194,28 +212,17 @@ const promoBtn = document.querySelector('.promo-btn')
 
 promoBtn.addEventListener('click', () => {
    if (promoInput.value === 'don2023') {
-      promoInput.value = 'Промокод (резиновый член) активирован!'
-      promoInput.style.color = '#00FF00'
-
-      resetActiveSkin()
-      inventory.skins[1].owns = true;
-      inventory.skins[1].enable = true;
-      findActiveSkin()
-
-
+      activatePromo(1)
+   } else if (promoInput.value === 'AmerikaLox') {
+      activatePromo(2)
+   } else {
+      promoInput.value = 'Промокод не найден!'
+      promoInput.style.color = 'red'
       setTimeout(() => {
          promoInput.style.color = '#fff'
          promoInput.value = ''
       }, 700);
-      return;
    }
-   promoInput.value = 'Промокод не найден!'
-   promoInput.style.color = 'red'
-   setTimeout(() => {
-      promoInput.style.color = '#fff'
-      promoInput.value = ''
-   }, 700);
-
 })
 
 const invBtn = document.querySelectorAll('.inv-item-btn');
