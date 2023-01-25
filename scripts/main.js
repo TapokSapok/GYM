@@ -187,12 +187,9 @@ function drochAnim() {
    let one = setInterval(frameOne, 0)
 
    function frameOne() {
-
       if (pos <= -350) {
-
          clearInterval(one)
          let two = setInterval(frameTwo, 0)
-
          function frameTwo() {
             if (pos === 0) {
                clearInterval(two)
@@ -200,13 +197,13 @@ function drochAnim() {
             } else {
                pos += speed
                hand.style.bottom = `${pos + 200}px`
-               activeSkin.style.bottom = `${pos / 2}px`
+               activeSkin.style.bottom = `${pos / 10}px`
             }
          }
       } else {
          pos -= speed;
          hand.style.bottom = `${pos + 200}px`
-         activeSkin.style.bottom = `${pos / 2}px`
+         activeSkin.style.bottom = `${pos / 10}px`
       }
    }
    setTimeout(() => {
