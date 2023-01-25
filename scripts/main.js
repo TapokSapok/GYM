@@ -16,44 +16,50 @@ let activeSkin;
 
 
 let multiplier = () => {
-   for (let i = 0; i < inventory.skins.length; i++) {
-      if (inventory.skins[i].enable) return inventory.skins[i].multiplier
+   for (let i = 0; i < game.skins.dicks.length; i++) {
+      if (game.skins.dicks[i].enable) return game.skins.dicks[i].multiplier
    }
 };
 
 let resetActiveSkin = () => {
    activeSkin.style.display = 'none'
-   for (let i = 0; i < inventory.skins.length; i++) {
-      inventory.skins[i].enable = false;
+   for (let i = 0; i < game.skins.dicks.length; i++) {
+      game.skins.dicks[i].enable = false;
    }
 }
 
 let findActiveSkin = () => {
-   for (let i = 0; i < inventory.skins.length; i++) {
-      if (inventory.skins[i].enable == true) {
+   for (let i = 0; i < game.skins.dicks.length; i++) {
+      if (game.skins.dicks[i].enable == true) {
 
-         switch (inventory.skins[i].item) {
+         switch (game.skins.dicks[i].item) {
             case 'default': activeSkin = document.getElementById('dick')
                break;
             case 'rubber': activeSkin = document.getElementById('skin-rubber')
                break;
-            case 'Amerikan': activeSkin = document.getElementById('skin-American')
+            case 'american': activeSkin = document.getElementById('skin-american')
+               break
          }
 
          activeSkin.style.display = 'block'
-         return inventory.skins[i].item;
+         return game.skins.dicks[i].item;
       }
    }
 }
 
-let inventory = {
-   skins: [
-      { item: 'default', owns: true, enable: true, multiplier: 1 },
-      { item: 'rubber', owns: false, enable: false, multiplier: 2 },
-      { item: 'Amerikan', owns: false, enable: false, multiplier: 2 },
-      { item: '', owns: false, enable: false, multiplier: 1 },
-      { item: '', owns: false, enable: false, multiplier: 1 },
-   ]
+const invItems = document.querySelectorAll('.inv-item');
+
+function adderToInventory() {
+   for (let i = 0; i < game.skins.dicks.length; i++) {
+      if (game.skins.dicks[i].owns) {
+         invItems.forEach((el) => {
+            if (el.dataset.skin === game.skins.dicks[i].item) {
+               el.style.display = 'block'
+               console.log(el.dataset.skin)
+            }
+         })
+      }
+   }
 }
 
 let game = {
@@ -63,10 +69,26 @@ let game = {
       { id: 2, title: '', },
       { id: 3, title: '', },
       { id: 4, title: '', },
-   ]
+   ],
+   skins: {
+      dicks: [
+         { item: 'default', owns: true, enable: true, multiplier: 1 },
+         { item: 'rubber', owns: false, enable: false, multiplier: 2 },
+         { item: 'american', owns: false, enable: false, multiplier: 2 },
+         { item: '', owns: false, enable: false, multiplier: 1 },
+         { item: '', owns: false, enable: false, multiplier: 1 },
+      ],
+      hands: [
+         { item: 'default', owns: false, enable: false, multiplier: 1 },
+         { item: '', owns: false, enable: false, multiplier: 1 },
+         { item: '', owns: false, enable: false, multiplier: 1 },
+         { item: '', owns: false, enable: false, multiplier: 1 },
+         { item: '', owns: false, enable: false, multiplier: 1 },
+      ]
+   }
 }
 
-window.onload = ch(); scoreOut()
+window.onload = ch(); scoreOut(); adderToInventory()
 
 function ch() {
    hand.style.bottom = `${200}px`
@@ -80,23 +102,6 @@ function ch() {
    // По поводу промокода на эксклюзивный член писать @SapokTapok
    // `)
    findActiveSkin()
-}
-
-function activatePromo(i) {
-   promoInput.value = 'Промокод активирован!'
-   promoInput.style.color = '#00FF00'
-
-   resetActiveSkin()
-   inventory.skins[i].owns = true;
-   inventory.skins[i].enable = true;
-   findActiveSkin()
-
-
-   setTimeout(() => {
-      promoInput.style.color = '#fff'
-      promoInput.value = ''
-   }, 700);
-   return;
 }
 
 const banPanel = document.querySelector('.ban-panel')
@@ -211,31 +216,50 @@ const promoInput = document.querySelector('.promo-input')
 const promoBtn = document.querySelector('.promo-btn')
 
 promoBtn.addEventListener('click', () => {
-   if (promoInput.value === 'don2023') {
-      activatePromo(1)
-   } else if (promoInput.value === 'AmerikaLox') {
-      activatePromo(2)
-   } else {
-      promoInput.value = 'Промокод не найден!'
-      promoInput.style.color = 'red'
-      setTimeout(() => {
-         promoInput.style.color = '#fff'
-         promoInput.value = ''
-      }, 700);
+   switch (promoInput.value) {
+      case 'don2023': activatePromo(1)
+         break
+      case 'AmericanLox': activatePromo(2)
+         break
+      default: {
+         promoInput.value = 'Промокод не найден!'
+         promoInput.style.color = 'red'
+         setTimeout(() => {
+            promoInput.style.color = '#fff'
+            promoInput.value = ''
+         }, 700);
+      }
+         break
    }
 })
 
+function activatePromo(i) {
+   promoInput.value = 'Промокод активирован!'
+   promoInput.style.color = '#00FF00'
+
+   resetActiveSkin()
+   game.skins.dicks[i].owns = true;
+   game.skins.dicks[i].enable = true;
+   findActiveSkin()
+
+   setTimeout(() => {
+      promoInput.style.color = '#fff'
+      promoInput.value = ''
+   }, 700);
+   return;
+}
+
 const invBtn = document.querySelectorAll('.inv-item-btn');
-const invItems = document.querySelector('.inv-items');
+
 
 invBtn.forEach((el) => {
    el.addEventListener('click', (e) => {
-      for (let i = 0; i < inventory.skins.length; i++) {
-         if (el.dataset.skin === inventory.skins[i].item) {
-            if (!inventory.skins[i].owns) { return; }
+      for (let i = 0; i < game.skins.dicks.length; i++) {
+         if (el.dataset.skin === game.skins.dicks[i].item) {
+            if (!game.skins.dicks[i].owns) { return; }
 
             resetActiveSkin()
-            inventory.skins[i].enable = true;
+            game.skins.dicks[i].enable = true;
             findActiveSkin()
 
             invBtn.forEach((el) => {
@@ -254,8 +278,8 @@ const shopItem = document.querySelectorAll('.shop-item')
 
 shopBtn.forEach((el) => {
    el.addEventListener('click', () => {
-      for (let i = 0; i < inventory.skins.length; i++) {
-         if (el.dataset.skin === inventory.skins[i].item) {
+      for (let i = 0; i < game.skins.dicks.length; i++) {
+         if (el.dataset.skin === game.skins.dicks[i].item) {
             if (spermiki < +el.dataset.price) {
                el.innerText = 'Нехватает спермы :('
                setTimeout(() => {
@@ -263,30 +287,23 @@ shopBtn.forEach((el) => {
                }, 700);
                return;
             }
+
             let data = el.dataset.skin
             spermiki -= +el.dataset.price
             scoreOut()
 
-            for (let i = 0; i < inventory.skins.length; i++) {
-               if (inventory.skins[i].item === data) {
-                  inventory.skins[i].owns = true;
+            for (let i = 0; i < game.skins.dicks.length; i++) {
+               if (game.skins.dicks[i].item === data) {
+                  game.skins.dicks[i].owns = true;
                }
             }
+            adderToInventory()
 
             shopItem.forEach((el) => {
                if (el.dataset.skin === data) {
                   el.remove()
                }
             })
-
-            let newItem = document.createElement('div')
-            newItem.className = "inv-item";
-            newItem.innerHTML = `
-            <div class="inv-item-title">${el.dataset.skin}</div>
-            <img src="skins/${el.dataset.skin}.png" class="inv-item-image">
-            <button class="inv-item-btn" data-skin="${el.dataset.skin}">Выбрать</button>
-            `;
-            invItems.append(newItem)
          }
       }
    })

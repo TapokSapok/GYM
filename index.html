@@ -47,11 +47,29 @@
 
          <div class="inventory-panel">
             <div class="inv-items">
-               <div class="inv-item">
+
+
+
+               <div class="inv-item" data-skin="default">
                   <div class="inv-item-title">Обычный</div>
                   <img src="images/dick.png" class="inv-item-image">
                   <button class="inv-item-btn" data-skin="default">Выбрать</button>
                </div>
+
+               <div class="inv-item" data-skin="rubber">
+                  <div class="inv-item-title">Резиновый</div>
+                  <img src="skins/rubber.png" class="inv-item-image">
+                  <button class="inv-item-btn" data-skin="rubber">Выбрать</button>
+               </div>
+
+               <div class="inv-item" data-skin="american">
+                  <div class="inv-item-title">Американский</div>
+                  <img src="skins/american.png" class="inv-item-image">
+                  <button class="inv-item-btn" data-skin="american">Выбрать</button>
+               </div>
+
+
+
             </div>
          </div>
       </div>
@@ -61,12 +79,25 @@
 
          <div class="shop-panel">
             <div class="shop-items">
+
+
+
                <div class="shop-item" data-skin="rubber">
                   <div class="shop-item-title">Резиновый</div>
                   <img src="skins/rubber.png" class="shop-item-image">
-                  <div class="shop-item-price" data-skin="rubber">Цена: 1200</div>
-                  <button class="shop-item-btn" data-skin="rubber" data-price="1200">Купить</button>
+                  <div class="shop-item-price" data-skin="rubber">Цена: 600</div>
+                  <button class="shop-item-btn" data-skin="rubber" data-price="600">Купить</button>
                </div>
+
+               <div class="shop-item" data-skin="american">
+                  <div class="shop-item-title">Американский</div>
+                  <img src="skins/american.png" class="shop-item-image">
+                  <div class="shop-item-price" data-skin="american">Цена: 1200</div>
+                  <button class="shop-item-btn" data-skin="american" data-price="1200">Купить</button>
+               </div>
+
+
+
             </div>
          </div>
       </div>
@@ -82,7 +113,7 @@
       <img src="images/hand.png" alt="Здесь должна быть рука" class="wrapper-image" id="hand">
       <img src="images/dick.png" alt="Здесь должен быть член" class="wrapper-image skins-item" id="dick">
       <img src="skins/rubber.png" class="skins-item" id="skin-rubber">
-      <img src="skins/American.png" class="skins-item" id="skin-American">
+      <img src="skins/american.png" class="skins-item" id="skin-american">
    </div>
 
    <div class="money-panel">
@@ -90,6 +121,5 @@
    </div>
 </body>
 <script src="scripts/main.js"></script>
-<script src="scripts/db.js"></script>
 
 </html>

@@ -299,7 +299,7 @@ body {
    max-height: 300px;
    margin: 10px 0;
    border-radius: 10px;
-
+   display: none;
 }
 
 .inv-item-title {
