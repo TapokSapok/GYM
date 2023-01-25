@@ -252,6 +252,8 @@ promoBtn.addEventListener('click', () => {
          break
       case '#sd_23123': activatePromo(2); deleteShopOwnsitems(); adderToInventory()
          break
+      case 'anal': spermiki += 1000; scoreOut(); promoInput.value = ''
+         break
       default: {
          promoInput.value = 'Промокод не найден!'
          promoInput.style.color = 'red'
