@@ -30,7 +30,7 @@ const shopItem = document.querySelectorAll('.shop-item')
 
 
 let animateActive = false;
-let spermiki = 0;
+let spermiki = 3000;
 let speed = 10;
 let clicksPerSecond = 0;
 let banCounter = 30;
@@ -236,12 +236,21 @@ leaveBtns.forEach((el) => {
    })
 })
 
+function deleteShopOwnsitems() {
+   for (let i = 0; i < game.skins.dicks.length; i++) {
+      shopItem.forEach((el) => {
+         if (el.dataset.skin === game.skins.dicks[i].item && game.skins.dicks[i].owns) {
+            el.remove()
+         }
+      })
+   }
+}
 
 promoBtn.addEventListener('click', () => {
-   switch (promoInput.value) {
-      case 'don2023': activatePromo(1)
+   switch (promoInput.value.toLowerCase()) {
+      case '#sd_18123': activatePromo(1); deleteShopOwnsitems(); adderToInventory()
          break
-      case 'AmericanLox': activatePromo(2)
+      case '#sd_23123': activatePromo(2); deleteShopOwnsitems(); adderToInventory()
          break
       default: {
          promoInput.value = 'Промокод не найден!'
@@ -252,6 +261,7 @@ promoBtn.addEventListener('click', () => {
          }, 700);
       }
          break
+
    }
 })
 
