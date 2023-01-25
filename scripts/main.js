@@ -30,7 +30,7 @@ const shopItem = document.querySelectorAll('.shop-item')
 
 
 let animateActive = false;
-let spermiki = 3000;
+let spermiki = 0;
 let speed = 10;
 let clicksPerSecond = 0;
 let banCounter = 30;
