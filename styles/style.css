@@ -423,6 +423,40 @@ body {
    text-align: center;
 }
 
+#progress {
+   position: absolute;
+   bottom: 60px;
+   left: -40px;
+   background: #191919;
+   z-index: 2;
+   rotate: -90deg;
+   height: 40px;
+}
+
+.spermaScreen {
+   position: absolute;
+   width: 100%;
+   height: 100%;
+   background-color: #fff;
+   z-index: 1;
+   opacity: 0;
+   pointer-events: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media only screen and (min-width : 650px) {
    .inv-item {
       width: 150px;

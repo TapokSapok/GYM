@@ -25,8 +25,8 @@ const shopBtn = document.querySelectorAll('.shop-item-btn')
 const shopPrice = document.querySelectorAll('.shop-item-price')
 const shopItem = document.querySelectorAll('.shop-item')
 
-
-
+const progressBar = document.getElementById('progress')
+const spermoScreen = document.querySelector('.spermaScreen')
 
 
 let animateActive = false;
@@ -36,6 +36,7 @@ let clicksPerSecond = 0;
 let banCounter = 30;
 let ban = false;
 let activeSkin;
+let children = 0;
 
 
 let multiplier = () => {
@@ -71,6 +72,8 @@ let findActiveSkin = () => {
       }
    }
 }
+
+
 
 function enableInventory() {
    invBtn.forEach((el) => {
@@ -138,6 +141,11 @@ function ch() {
    findActiveSkin()
 }
 
+function getRandomInt(min, max) {
+   min = Math.ceil(min);
+   max = Math.floor(max);
+   return Math.floor(Math.random() * (max - min) + min);
+}
 
 document.addEventListener('click', () => {
    if (clicksPerSecond == 15) {
@@ -179,6 +187,28 @@ function scoreOut() {
    banCounterQuery.innerText = banCounter
 }
 
+
+let numOfKoncha = 95
+let numOfKonchaOpacity = 0;
+function koncha() {
+   if (progressBar.value >= 100) {
+      progressBar.value = 0;
+      numOfKoncha = 95;
+      numOfKonchaOpacity = 0;
+      spermoScreen.style.opacity = `0`;
+      children += getRandomInt(0, 5)
+   }
+   frame()
+   function frame() {
+      if (progressBar.value == numOfKoncha) {
+         spermoScreen.style.opacity = `0.${numOfKonchaOpacity}`;
+         numOfKoncha += 1
+         numOfKonchaOpacity += 2
+         frame()
+      }
+   }
+}
+
 function drochAnim() {
    if (animateActive === true) return;
    animateActive = true;
@@ -208,7 +238,9 @@ function drochAnim() {
    }
    setTimeout(() => {
       spermiki += multiplier()
+      progressBar.value += multiplier()
       scoreOut()
+      koncha()
    }, speed);
 }
 
@@ -263,7 +295,6 @@ promoBtn.addEventListener('click', () => {
          }, 700);
       }
          break
-
    }
 })
 
