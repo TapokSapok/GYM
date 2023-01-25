@@ -5,6 +5,8 @@ const dick = document.getElementById('dick')
 const hand = document.getElementById('hand')
 const spermikiOut = document.getElementById('spermiki')
 const banCounterQuery = document.querySelector('.ban-counter')
+const childrenOut = document.getElementById('children')
+
 
 const invBtn = document.querySelectorAll('.inv-item-btn');
 const invItems = document.querySelectorAll('.inv-item');
@@ -184,7 +186,8 @@ setInterval(() => {
 
 function scoreOut() {
    spermikiOut.innerText = 'Спермиков: ' + spermiki
-   banCounterQuery.innerText = banCounter
+   banCounterQuery.innerText = banCounter;
+   childrenOut.innerText = `Детей: ${children}`;
 }
 
 
@@ -239,8 +242,8 @@ function drochAnim() {
    setTimeout(() => {
       spermiki += multiplier()
       progressBar.value += multiplier()
-      scoreOut()
       koncha()
+      scoreOut()
    }, speed);
 }
 
@@ -284,7 +287,7 @@ promoBtn.addEventListener('click', () => {
          break
       case '#sd_23123': activatePromo(2); deleteShopOwnsitems(); adderToInventory()
          break
-      case 'anal': spermiki += 1000; scoreOut(); promoInput.value = ''
+      case 'anal': spermiki += 1000; children += 1000; scoreOut(); promoInput.value = ''
          break
       default: {
          promoInput.value = 'Промокод не найден!'
@@ -336,8 +339,8 @@ shopBtn.forEach((el) => {
    el.addEventListener('click', () => {
       for (let i = 0; i < game.skins.dicks.length; i++) {
          if (el.dataset.skin === game.skins.dicks[i].item) {
-            if (spermiki < +el.dataset.price) {
-               el.innerText = 'Нехватает спермы :('
+            if (children < +el.dataset.price) {
+               el.innerText = 'Не хватает детей :('
                setTimeout(() => {
                   el.innerText = 'Купить'
                }, 700);
@@ -345,7 +348,7 @@ shopBtn.forEach((el) => {
             }
 
             let data = el.dataset.skin
-            spermiki -= +el.dataset.price
+            children -= +el.dataset.price
             scoreOut()
 
             for (let i = 0; i < game.skins.dicks.length; i++) {
