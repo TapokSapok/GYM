@@ -6,8 +6,31 @@ const hand = document.getElementById('hand')
 const spermikiOut = document.getElementById('spermiki')
 const banCounterQuery = document.querySelector('.ban-counter')
 
+const invBtn = document.querySelectorAll('.inv-item-btn');
+const invItems = document.querySelectorAll('.inv-item');
+
+const banPanel = document.querySelector('.ban-panel')
+
+const btnPanels = document.querySelectorAll('.panel-btn')
+const leaveBtns = document.querySelectorAll('.leave-btn')
+
+const openBtn = document.querySelector('.open-btn')
+const btnsMenu = document.querySelector('.btn-items')
+const btns = document.querySelectorAll('.btn-item')
+
+const promoInput = document.querySelector('.promo-input')
+const promoBtn = document.querySelector('.promo-btn')
+
+const shopBtn = document.querySelectorAll('.shop-item-btn')
+const shopPrice = document.querySelectorAll('.shop-item-price')
+const shopItem = document.querySelectorAll('.shop-item')
+
+
+
+
+
 let animateActive = false;
-let spermiki = 0;
+let spermiki = 3000;
 let speed = 10;
 let clicksPerSecond = 0;
 let banCounter = 30;
@@ -38,8 +61,10 @@ let findActiveSkin = () => {
             case 'rubber': activeSkin = document.getElementById('skin-rubber')
                break;
             case 'american': activeSkin = document.getElementById('skin-american')
-               break
+               break;
          }
+
+         enableInventory()
 
          activeSkin.style.display = 'block'
          return game.skins.dicks[i].item;
@@ -47,7 +72,16 @@ let findActiveSkin = () => {
    }
 }
 
-const invItems = document.querySelectorAll('.inv-item');
+function enableInventory() {
+   invBtn.forEach((el) => {
+      el.innerText = 'Выбрать'
+      for (let i = 0; i < game.skins.dicks.length; i++) {
+         if (game.skins.dicks[i].enable && game.skins.dicks[i].item === el.dataset.skin) {
+            el.innerText = 'Используется'
+         }
+      }
+   })
+}
 
 function adderToInventory() {
    for (let i = 0; i < game.skins.dicks.length; i++) {
@@ -104,7 +138,6 @@ function ch() {
    findActiveSkin()
 }
 
-const banPanel = document.querySelector('.ban-panel')
 
 document.addEventListener('click', () => {
    if (clicksPerSecond == 15) {
@@ -182,12 +215,6 @@ function drochAnim() {
    }, speed);
 }
 
-const btnPanels = document.querySelectorAll('.panel-btn')
-const leaveBtns = document.querySelectorAll('.leave-btn')
-
-const openBtn = document.querySelector('.open-btn')
-const btnsMenu = document.querySelector('.btn-items')
-const btns = document.querySelectorAll('.btn-item')
 
 openBtn.addEventListener('click', () => {
    btnsMenu.style.display == 'none' ? btnsMenu.style.display = 'block' : btnsMenu.style.display = 'none'
@@ -212,8 +239,6 @@ leaveBtns.forEach((el) => {
    })
 })
 
-const promoInput = document.querySelector('.promo-input')
-const promoBtn = document.querySelector('.promo-btn')
 
 promoBtn.addEventListener('click', () => {
    switch (promoInput.value) {
@@ -249,8 +274,6 @@ function activatePromo(i) {
    return;
 }
 
-const invBtn = document.querySelectorAll('.inv-item-btn');
-
 
 invBtn.forEach((el) => {
    el.addEventListener('click', (e) => {
@@ -262,19 +285,12 @@ invBtn.forEach((el) => {
             game.skins.dicks[i].enable = true;
             findActiveSkin()
 
-            invBtn.forEach((el) => {
-               el.innerText = 'Выбрать'
-            })
-
-            el.innerText = 'Используется'
+            enableInventory()
          }
       }
    })
 })
 
-const shopBtn = document.querySelectorAll('.shop-item-btn')
-const shopPrice = document.querySelectorAll('.shop-item-price')
-const shopItem = document.querySelectorAll('.shop-item')
 
 shopBtn.forEach((el) => {
    el.addEventListener('click', () => {
