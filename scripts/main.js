@@ -1,44 +1,35 @@
 
-
-const wrapper = document.querySelector('.wrapper')
-const dick = document.getElementById('dick')
-const hand = document.getElementById('hand')
-const spermikiOut = document.getElementById('spermiki')
-const banCounterQuery = document.querySelector('.ban-counter')
-const childrenOut = document.getElementById('children')
-
-
-const invBtn = document.querySelectorAll('.inv-item-btn');
-const invItems = document.querySelectorAll('.inv-item');
-
-const banPanel = document.querySelector('.ban-panel')
-
-const btnPanels = document.querySelectorAll('.panel-btn')
-const leaveBtns = document.querySelectorAll('.leave-btn')
-
-const openBtn = document.querySelector('.open-btn')
-const btnsMenu = document.querySelector('.btn-items')
-const btns = document.querySelectorAll('.btn-item')
-
-const promoInput = document.querySelector('.promo-input')
-const promoBtn = document.querySelector('.promo-btn')
-
-const shopBtn = document.querySelectorAll('.shop-item-btn')
-const shopPrice = document.querySelectorAll('.shop-item-price')
-const shopItem = document.querySelectorAll('.shop-item')
-
-const progressBar = document.getElementById('progress')
-const spermoScreen = document.querySelector('.spermaScreen')
+const wrapper = document.querySelector('.wrapper'),
+   dick = document.getElementById('dick'),
+   hand = document.getElementById('hand'),
+   spermikiOut = document.getElementById('spermiki'),
+   banCounterQuery = document.querySelector('.ban-counter'),
+   childrenOut = document.getElementById('children'),
+   invBtn = document.querySelectorAll('.inv-item-btn'),
+   invItems = document.querySelectorAll('.inv-item'),
+   banPanel = document.querySelector('.ban-panel'),
+   btnPanels = document.querySelectorAll('.panel-btn'),
+   leaveBtns = document.querySelectorAll('.leave-btn'),
+   openBtn = document.querySelector('.open-btn'),
+   btnsMenu = document.querySelector('.btn-items'),
+   btns = document.querySelectorAll('.btn-item'),
+   promoInput = document.querySelector('.promo-input'),
+   promoBtn = document.querySelector('.promo-btn'),
+   shopBtn = document.querySelectorAll('.shop-item-btn'),
+   shopPrice = document.querySelectorAll('.shop-item-price'),
+   shopItem = document.querySelectorAll('.shop-item'),
+   progressBar = document.getElementById('progress'),
+   spermoScreen = document.querySelector('.spermaScreen')
 
 
-let animateActive = false;
-let spermiki = 0;
-let speed = 10;
-let clicksPerSecond = 0;
-let banCounter = 30;
-let ban = false;
-let activeSkin;
-let children = 0;
+let animateActive = false,
+   spermiki = 0,
+   speed = 10,
+   clicksPerSecond = 0,
+   banCounter = 30,
+   ban = false,
+   activeSkin,
+   children = 0
 
 
 let multiplier = () => {
@@ -191,8 +182,7 @@ function scoreOut() {
 }
 
 
-let numOfKoncha = 95
-let numOfKonchaOpacity = 0;
+let numOfKoncha = 95, numOfKonchaOpacity = 0;
 function koncha() {
    if (progressBar.value >= 100) {
       progressBar.value = 0;
