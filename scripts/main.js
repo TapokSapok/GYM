@@ -282,6 +282,9 @@ function deleteShopOwnsitems() {
 }
 
 promoBtn.addEventListener('click', () => {
+   promoInput.value = promoInput.value.replace(/\s/g, '');
+   if (promoInput.value === '') return;
+
    switch (promoInput.value.toLowerCase()) {
       case '#sd_18123': activatePromo(1); deleteShopOwnsitems(); adderToInventory()
          break
