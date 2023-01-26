@@ -33,9 +33,18 @@ let animateActive = false,
 
 
 let multiplier = () => {
+   let result = 0;
    for (let i = 0; i < game.skins.dicks.length; i++) {
-      if (game.skins.dicks[i].enable) return game.skins.dicks[i].multiplier + game.skins.hands[i].multiplier
+      if (game.skins.dicks[i].enable) {
+         result += game.skins.dicks[i].multiplier
+      }
    }
+   for (let i = 0; i < game.skins.hands.length; i++) {
+      if (game.skins.hands[i].enable) {
+         result += game.skins.hands[i].multiplier
+      }
+   }
+   return result
 };
 
 let resetActiveSkin = () => {
@@ -109,7 +118,7 @@ let game = {
          { item: '', owns: false, enable: false, multiplier: 1 },
       ],
       hands: [
-         { item: 'default', owns: false, enable: false, multiplier: 0 },
+         { item: 'default', owns: true, enable: true, multiplier: 0 },
          { item: '', owns: false, enable: false, multiplier: 0 },
          { item: '', owns: false, enable: false, multiplier: 0 },
          { item: '', owns: false, enable: false, multiplier: 0 },
@@ -234,6 +243,7 @@ function drochAnim() {
       progressBar.value += multiplier()
       koncha()
       scoreOut()
+      console.log(multiplier())
    }, speed);
 }
 
