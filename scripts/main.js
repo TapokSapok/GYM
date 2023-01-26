@@ -34,7 +34,7 @@ let animateActive = false,
 
 let multiplier = () => {
    for (let i = 0; i < game.skins.dicks.length; i++) {
-      if (game.skins.dicks[i].enable) return game.skins.dicks[i].multiplier
+      if (game.skins.dicks[i].enable) return game.skins.dicks[i].multiplier + game.skins.hands[i].multiplier
    }
 };
 
@@ -104,16 +104,16 @@ let game = {
       dicks: [
          { item: 'default', owns: true, enable: true, multiplier: 1 },
          { item: 'rubber', owns: false, enable: false, multiplier: 2 },
-         { item: 'american', owns: false, enable: false, multiplier: 2 },
+         { item: 'american', owns: false, enable: false, multiplier: 3 },
          { item: '', owns: false, enable: false, multiplier: 1 },
          { item: '', owns: false, enable: false, multiplier: 1 },
       ],
       hands: [
-         { item: 'default', owns: false, enable: false, multiplier: 1 },
-         { item: '', owns: false, enable: false, multiplier: 1 },
-         { item: '', owns: false, enable: false, multiplier: 1 },
-         { item: '', owns: false, enable: false, multiplier: 1 },
-         { item: '', owns: false, enable: false, multiplier: 1 },
+         { item: 'default', owns: false, enable: false, multiplier: 0 },
+         { item: '', owns: false, enable: false, multiplier: 0 },
+         { item: '', owns: false, enable: false, multiplier: 0 },
+         { item: '', owns: false, enable: false, multiplier: 0 },
+         { item: '', owns: false, enable: false, multiplier: 0 },
       ]
    }
 }
@@ -278,7 +278,7 @@ promoBtn.addEventListener('click', () => {
    switch (promoInput.value.toLowerCase()) {
       case '#sd_18123': activatePromo(1); deleteShopOwnsitems(); adderToInventory()
          break
-      case '#sd_23123': activatePromo(2); deleteShopOwnsitems(); adderToInventory()
+      case '#ad_23123': activatePromo(2); deleteShopOwnsitems(); adderToInventory()
          break
       case 'anal': spermiki += 1000; children += 1000; scoreOut(); promoInput.value = ''
          break
