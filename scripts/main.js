@@ -65,6 +65,8 @@ let findActiveSkin = () => {
                break;
             case 'american': activeSkin = document.getElementById('skin-american')
                break;
+            case 'lgbt': activeSkin = document.getElementById('skin-lgbt')
+               break
          }
 
          enableInventory()
@@ -114,7 +116,7 @@ let game = {
          { item: 'default', owns: true, enable: true, multiplier: 1 },
          { item: 'rubber', owns: false, enable: false, multiplier: 2 },
          { item: 'american', owns: false, enable: false, multiplier: 3 },
-         { item: '', owns: false, enable: false, multiplier: 1 },
+         { item: 'lgbt', owns: false, enable: false, multiplier: 2 },
          { item: '', owns: false, enable: false, multiplier: 1 },
       ],
       hands: [
@@ -289,6 +291,8 @@ promoBtn.addEventListener('click', () => {
       case '#sd_18123': activatePromo(1); deleteShopOwnsitems(); adderToInventory()
          break
       case '#ad_23123': activatePromo(2); deleteShopOwnsitems(); adderToInventory()
+         break
+      case '#ld_27123': activatePromo(3); deleteShopOwnsitems(); adderToInventory()
          break
       case 'anal': spermiki += 1000; children += 1000; scoreOut(); promoInput.value = ''
          break
