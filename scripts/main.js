@@ -19,7 +19,10 @@ const wrapper = document.querySelector('.wrapper'),
    shopPrice = document.querySelectorAll('.shop-item-price'),
    shopItem = document.querySelectorAll('.shop-item'),
    progressBar = document.getElementById('progress'),
-   spermoScreen = document.querySelector('.spermaScreen')
+   spermoScreen = document.querySelector('.spermaScreen'),
+   caseItems = document.querySelectorAll('.case-item'),
+   caseBtnInspection = document.querySelectorAll('.case-btn-inspection'),
+   caseBtn = document.querySelectorAll('.case-item-btn')
 
 
 let animateActive = false,
@@ -374,3 +377,9 @@ shopBtn.forEach((el) => {
       }
    })
 })
+
+// caseItems.forEach((el) => {
+//    el.addEventListener('click', (e) => {
+//       console.log(e.dataset.case.value)
+//    })
+// })
